@@ -9,8 +9,9 @@ function Update ()
 {
 	if (Input.GetButtonDown("Fire1")) 
 	{
-	
+		//Attack animation
 		TheMace.animation.Play("Attack");
+		//Attack function
 	 	var hit : RaycastHit;
 	 	if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), hit))
 	 	{ 
@@ -21,6 +22,17 @@ function Update ()
 	 		}
 	 	}
  	}
+ 	if (TheMace.animation.isPlaying == false) 
+ 	{
+ 		TheMace.animation.CrossFade("Idle");
+ 	}
+ 	if (Input.GetKey (KeyCode.LeftShift))
+ 	{
+ 		TheMace.animation.CrossFade ("Run");
+ 	}
+ 	
+ 	if (Input.GetKeyUp(KeyCode.LeftShift))
+ 	{
+ 		TheMace.animation.CrossFade ("Idle");
+ 	}
 }
-
-
