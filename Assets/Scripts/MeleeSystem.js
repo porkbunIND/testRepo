@@ -1,5 +1,5 @@
 ﻿#pragma strict
-var TheDamage : int = 50;
+var TheDamage : int = 100;
 var Distance : float;
 var MaxDistance : float = 1.5;
 var TheMace : Transform;

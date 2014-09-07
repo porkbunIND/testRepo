@@ -1,6 +1,6 @@
 ﻿#pragma strict
-var Health = 100;
-
+var Health = 200;
+var mana = 400;
 function Update ()
 {
 	if (Health <= 0)
