@@ -2,7 +2,7 @@
 var TheDamage : int = 100;
 var Distance : float;
 var MaxDistance : float = 1.5;
-var TheMace : Transform;
+var TheSystem : Transform;
 
 
 function Update () 
@@ -10,29 +10,34 @@ function Update ()
 	if (Input.GetButtonDown("Fire1")) 
 	{
 		//Attack animation
-		TheMace.animation.Play("Attack");
-		//Attack function
-	 	var hit : RaycastHit;
-	 	if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), hit))
-	 	{ 
-	 		Distance = hit.distance;
-	 		if (Distance < MaxDistance)
-	 		{
-	 			hit.transform.SendMessage ("ApplyDamage", TheDamage, SendMessageOptions.DontRequireReceiver);
-	 		}
-	 	}
+		animation.Play("Attack");
+		
  	}
- 	if (TheMace.animation.isPlaying == false) 
+ 	if (animation.isPlaying == false) 
  	{
- 		TheMace.animation.CrossFade("Idle");
+ 		animation.CrossFade("Idle");
  	}
  	if (Input.GetKey (KeyCode.LeftShift))
  	{
- 		TheMace.animation.CrossFade ("Run");
+ 		animation.CrossFade ("Run");
  	}
  	
  	if (Input.GetKeyUp(KeyCode.LeftShift))
  	{
- 		TheMace.animation.CrossFade ("Idle");
+ 		animation.CrossFade ("Idle");
+ 	}
+}
+
+function AttackDamage ()
+{
+	//Attack function
+ 	var hit : RaycastHit;
+ 	if (Physics.Raycast (TheSystem.transform.position, TheSystem.transform.TransformDirection(Vector3.forward), hit))
+ 	{ 
+ 		Distance = hit.distance;
+ 		if (Distance < MaxDistance)
+ 		{
+ 			hit.transform.SendMessage ("ApplyDamage", TheDamage, SendMessageOptions.DontRequireReceiver);
+ 		}
  	}
 }
