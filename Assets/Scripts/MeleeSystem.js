@@ -10,48 +10,20 @@ function Update ()
 	if (Input.GetButtonDown("Fire1")) 
 	{
 		//Attack animation
-		if(this.gameObject.name == "Mace")
-		{
-			animation.Play("Attack");
-		}
-		if(this.gameObject.name == "Spear")
-		{
-			animation.Play("SpearAttack");
-		}
+		animation.Play(this.gameObject.name+"Attack");
 	}
  	if (animation.isPlaying == false) 
  	{
- 		if(this.gameObject.name == "Mace")
-		{
-			animation.CrossFade("Idle");
-		}
-		if(this.gameObject.name == "Spear")
-		{
-			animation.CrossFade("SpearIdle");
-		}
+ 		animation.CrossFade("IronMaceIdle");//this.gameObject.name+"Idle");
  	}
  	if (Input.GetKey (KeyCode.LeftShift))
  	{
- 		if(this.gameObject.name == "Mace")
-		{
-			animation.CrossFade("Run");
-		}
-		if(this.gameObject.name == "Spear")
-		{
-			animation.CrossFade("SpearRun");
-		}
+ 		animation.CrossFade(this.gameObject.name+"Run");
  	}
  	
  	if (Input.GetKeyUp(KeyCode.LeftShift))
  	{
- 		if(this.gameObject.name == "Mace")
-		{
-			animation.CrossFade("Idle");
-		}
-		if(this.gameObject.name == "Spear")
-		{
-			animation.CrossFade("SpearIdle");
-		}
+ 		animation.CrossFade(this.gameObject.name+"Idle");
  	}
 }
 
