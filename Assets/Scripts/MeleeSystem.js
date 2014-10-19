@@ -7,23 +7,25 @@ var TheSystem : Transform;
 
 function Update () 
 {
+	//var animationPrefix = this.gameObject.name;
+	var animationPrefix = "IronMace";
 	if (Input.GetButtonDown("Fire1")) 
 	{
 		//Attack animation
-		animation.Play(this.gameObject.name+"Attack");
+		animation.Play(animationPrefix+"Attack");
 	}
  	if (animation.isPlaying == false) 
  	{
- 		animation.CrossFade("IronMaceIdle");//this.gameObject.name+"Idle");
+ 		animation.CrossFade(animationPrefix+"Idle");//this.gameObject.name+"Idle");
  	}
  	if (Input.GetKey (KeyCode.LeftShift))
  	{
- 		animation.CrossFade(this.gameObject.name+"Run");
+ 		animation.CrossFade(animationPrefix+"Run");
  	}
  	
  	if (Input.GetKeyUp(KeyCode.LeftShift))
  	{
- 		animation.CrossFade(this.gameObject.name+"Idle");
+ 		animation.CrossFade(animationPrefix+"Idle");
  	}
 }
 
